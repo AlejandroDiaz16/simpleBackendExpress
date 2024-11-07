@@ -10,22 +10,20 @@ function getAllTodos() {
     return resp
 }
 
-function addTodos(todos) {
-    const resp = {}
-    if (todos?.length > 0) {
-        const data = todos
-        data.forEach(element => {
-            if (typeof(element.id) == Integer) {
-                todos.push(element)
-            } else {
-                resp.error = 'Invalid data'
-            }
-        });
-        resp.data = element
-    } else {
-        resp.error = 'Invalid data'
-    }
-    return resp
+function addTodos(obj) {
+  const resp = {};
+  if (obj?.title) {
+    const element = {
+      id: todos.length,
+      title: obj.title,
+      completed: false,
+    };
+    todos.push(element);
+    resp.data = element;
+  } else {
+    resp.error = "Invalid data";
+  }
+  return resp;
 }
 
 function updateTodosById(elementId, element) {
